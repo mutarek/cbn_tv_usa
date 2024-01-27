@@ -37,7 +37,6 @@ class LoggingInterceptor extends InterceptorsWrapper {
     }
 
     debugPrint("<-- END HTTP");
-
     super.onResponse(response, handler);
   }
 
