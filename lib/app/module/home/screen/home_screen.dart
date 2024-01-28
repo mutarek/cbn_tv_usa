@@ -2,6 +2,7 @@ import 'package:cbn_tv_usa/app/module/category/screen/category_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/components/custom_drawer.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/secondpage.dart';
+import 'package:cbn_tv_usa/app/module/home/screen/video_news_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,25 +12,26 @@ import 'home_page.dart';
 class MainHomeScreen extends StatelessWidget {
   MainHomeScreen({super.key});
 
-  var PagesAll = [
-    const PageScreen(),
-    HomePage(),
-    CategoryScreen(),
-    PageScreen()
+  var pagesAll = [
+    const VideoNewsScreen(),
+    const HomePage(),
+    const CategoryScreen(),
+    const PageScreen()
   ];
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     Provider.of<HomeController>(context, listen: false).getAllPosts(true);
-    return Consumer<HomeController>
-      (builder: (context, controller, child) {
+    return Consumer<HomeController>(builder: (context, controller, child) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("CBN Tv usa"),
+          title: Image.asset("asset/images/logo.png",height: height * 0.06,),
           centerTitle: true,
+          iconTheme: IconThemeData(color: primaryColor),
         ),
         drawer: const CustomDrawer(),
-        body: PagesAll[controller.page],
+        body: pagesAll[controller.page],
         bottomNavigationBar: CurvedNavigationBar(
           key: controller.bottomNavigationKey,
           height: 50,
@@ -48,20 +50,19 @@ class MainHomeScreen extends StatelessWidget {
             bottomItem(
                 title: "Live",
                 index: 2,
-                icon: Icons.face,
+                icon: Icons.category_outlined,
                 controller: controller),
             bottomItem(
-                title: "Video",
+                title: "Pages",
                 index: 3,
-                icon: Icons.video_call,
+                icon: Icons.pages,
                 controller: controller),
-
           ],
-          color: kIConColor,
+          color: Colors.transparent,
           buttonBackgroundColor: Colors.white,
           backgroundColor: Colors.transparent,
-          animationCurve: Curves.easeInOut,
-          animationDuration: const Duration(milliseconds: 600),
+          //animationCurve: Curves.easeInOut,
+          //animationDuration: const Duration(milliseconds: 600),
           onTap: (index) {
             controller.updateCurrentIndex(index);
           },
@@ -71,26 +72,27 @@ class MainHomeScreen extends StatelessWidget {
     });
   }
 
-  Widget bottomItem({required int index,
-    required String title,
-    required IconData icon,
-    required HomeController controller}) {
+  Widget bottomItem(
+      {required int index,
+      required String title,
+      required IconData icon,
+      required HomeController controller}) {
     if (index == controller.page) {
       return Icon(
         icon,
         size: 26,
-        color: Colors.red,
+        color: primaryColor,
       );
     } else {
       return Padding(
-        padding: const EdgeInsets.only(top: 6.0),
+        padding: const EdgeInsets.only(top: 6),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               icon,
               size: 22,
-              color: Colors.white,
+              color: Colors.grey,
             ),
             const SizedBox(height: 5),
           ],

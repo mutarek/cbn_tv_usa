@@ -1,6 +1,5 @@
 import 'package:cbn_tv_usa/app/module/category/controller/category_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
-import 'package:cbn_tv_usa/app/utils/appConstant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,7 @@ import 'di_container.dart' as di;
 import 'package:flutter/services.dart';
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light));
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,10 +32,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: kIConColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
         useMaterial3: true,
       ),
-      home:  MainHomeScreen(),
+      home: MainHomeScreen(),
     );
   }
 }

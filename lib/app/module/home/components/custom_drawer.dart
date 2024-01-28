@@ -9,7 +9,6 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<HomeController>(context, listen: false).getAllPages();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Consumer<HomeController>(builder: (context, controller, child) {
@@ -20,15 +19,14 @@ class CustomDrawer extends StatelessWidget {
             child: Column(
               children: [
                 DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Colors.teal,
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
                   ),
-                  child: Container(
+                  child: SizedBox(
                     width: width,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        "https://cbntvusa.net/wp-content/uploads/2022/07/285320613_505404407976779_5977164890469196933_n-1.jpg",
+                      child: Image.asset("asset/images/logo.png",
                         height: height * 0.4,
                         fit: BoxFit.fitWidth,
                       ),
@@ -61,6 +59,7 @@ class CustomDrawer extends StatelessWidget {
                                     size: 16,
                                   ),
                                   onTap: () {
+                                    Navigator.pop(context);
                                     controller.updatePageIndex(index);
                                   },
                                 ),

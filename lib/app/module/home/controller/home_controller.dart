@@ -197,6 +197,17 @@ class HomeController with ChangeNotifier {
     }
   }
 
+  List<PostModel> searchModelList = [];
+
+  void searchFromList(String value) {
+    searchModelList = postModelList
+        .where((item) => (item.title?.rendered ?? "")
+            .toLowerCase()
+            .contains(value.toLowerCase()))
+        .toList();
+    notifyListeners();
+  }
+
 // List<CategoryModel> categoryList = [];
 //
 // getAllCategories() async {
