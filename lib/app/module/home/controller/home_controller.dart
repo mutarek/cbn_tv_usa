@@ -1,3 +1,4 @@
+import 'package:cbn_tv_usa/app/module/home/model/PageModel.dart';
 import 'package:cbn_tv_usa/app/module/home/model/PostModel.dart';
 import 'package:cbn_tv_usa/app/module/home/repo/home_repo.dart';
 import 'package:cbn_tv_usa/app/remote/response/api_response.dart';
@@ -13,6 +14,7 @@ class HomeController with ChangeNotifier {
   HomeController({required this.homeRepository});
 
   var postIndex = -1;
+  var pageIndex = 0;
   bool isLoading = false;
   var currentIndex = 0;
   int page = 0;
@@ -165,8 +167,34 @@ class HomeController with ChangeNotifier {
     updateCurrentIndex(1);
     currentIndex = 1;
     notifyListeners();
-    getAllPosts(false,categoryCode: id);
+    getAllPosts(false, categoryCode: id);
     notifyListeners();
+  }
+
+  void updatePageIndex(int position) {
+    updateCurrentIndex(0);
+    currentIndex = 0;
+    pageIndex = position;
+    notifyListeners();
+  }
+
+  List<PageModel> pageList = [];
+
+  getAllPages() async {
+    ApiResponse response;
+    pageList.clear();
+    isLoading = true;
+    notifyListeners();
+    response = await homeRepository.getAllPage();
+    isLoading = false;
+    notifyListeners();
+    if (response.response.statusCode == 200) {
+      response.response.data.forEach((element) {
+        pageList.add(PageModel.fromJson(element));
+      });
+    } else {
+      Fluttertoast.showToast(msg: response.response.statusMessage!);
+    }
   }
 
 // List<CategoryModel> categoryList = [];

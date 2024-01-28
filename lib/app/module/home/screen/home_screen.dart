@@ -1,17 +1,23 @@
 import 'package:cbn_tv_usa/app/module/category/screen/category_screen.dart';
+import 'package:cbn_tv_usa/app/module/home/components/custom_drawer.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/secondpage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
 import '../../../utils/app_colors.dart';
 import 'home_page.dart';
 
 class MainHomeScreen extends StatelessWidget {
   MainHomeScreen({super.key});
-  var PagesAll = [const secondpage(),HomePage(),CategoryScreen(),secondpage()];
+
+  var PagesAll = [
+    const PageScreen(),
+    HomePage(),
+    CategoryScreen(),
+    PageScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     Provider.of<HomeController>(context, listen: false).getAllPosts(true);
@@ -22,7 +28,7 @@ class MainHomeScreen extends StatelessWidget {
           title: Text("CBN Tv usa"),
           centerTitle: true,
         ),
-        drawer: Drawer(),
+        drawer: const CustomDrawer(),
         body: PagesAll[controller.page],
         bottomNavigationBar: CurvedNavigationBar(
           key: controller.bottomNavigationKey,
@@ -65,11 +71,10 @@ class MainHomeScreen extends StatelessWidget {
     });
   }
 
-  Widget bottomItem(
-      {required int index,
-      required String title,
-      required IconData icon,
-      required HomeController controller}) {
+  Widget bottomItem({required int index,
+    required String title,
+    required IconData icon,
+    required HomeController controller}) {
     if (index == controller.page) {
       return Icon(
         icon,
