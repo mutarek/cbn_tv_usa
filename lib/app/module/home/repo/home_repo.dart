@@ -12,7 +12,7 @@ class HomeRepository {
   Future<ApiResponse> getAllPosts() async {
     Response response = Response(requestOptions: RequestOptions(path: '22222'));
     try {
-      response = await dioClient.get(AppConstant.baseUrl + AppConstant.postsUrl);
+      response = await dioClient.get(AppConstant.postsUrl);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e), response);
@@ -22,7 +22,7 @@ class HomeRepository {
   Future<ApiResponse> getAllPostsByCategory(int category) async {
     Response response = Response(requestOptions: RequestOptions(path: '22222'));
     try {
-      response = await dioClient.get("${AppConstant.baseUrl}${AppConstant.postsUrl}?categories=$category");
+      response = await dioClient.get("${AppConstant.postsUrl}?categories=$category");
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e), response);
@@ -32,7 +32,7 @@ class HomeRepository {
   Future<ApiResponse> getAllCategories() async {
     Response response = Response(requestOptions: RequestOptions(path: '22222'));
     try {
-      response = await dioClient.get(AppConstant.baseUrl + AppConstant.categoriesUrl);
+      response = await dioClient.get(AppConstant.categoriesUrl);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e), response);
@@ -42,7 +42,7 @@ class HomeRepository {
   Future<ApiResponse> getAllPage() async {
     Response response = Response(requestOptions: RequestOptions(path: '22222'));
     try {
-      response = await dioClient.get(AppConstant.baseUrl + AppConstant.pages);
+      response = await dioClient.get(AppConstant.pages);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e), response);

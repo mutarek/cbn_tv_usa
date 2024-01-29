@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "480922300371",
+    "project_id": "cbn-tv-usa",
+    "storage_bucket": "cbn-tv-usa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480922300371:android:ce3e80f65bf371c8644926",
+        "android_client_info": {
+          "package_name": "com.example.cbn_tv_usa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9Lx5U78w-tTqXZZ2wZESJz3giJ7hdIIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

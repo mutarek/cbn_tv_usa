@@ -19,7 +19,7 @@ void main() async {
       ChangeNotifierProvider(create: (context) => di.sl<HomeController>()),
       ChangeNotifierProvider(create: (context) => di.sl<CategoryController>()),
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
