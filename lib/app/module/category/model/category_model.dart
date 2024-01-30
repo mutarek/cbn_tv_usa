@@ -11,7 +11,7 @@ class CategoryModel {
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
     id: json["id"],
-    count: json["count"],
+    count: json["counts"],
     name: json["name"],
   );
   Map<String,dynamic> toJson()=>{

@@ -33,7 +33,7 @@ class PostModel {
     id = json["id"];
     date = DateTime.parse(json["date"]);
     dateGmt = DateTime.parse(json["date_gmt"]);
-    guid = Guid.fromJson(json["guid"]);
+    guid = Guid.fromJson(json["guids"]);
     modified = DateTime.parse(json["modified"]);
     modifiedGmt = DateTime.parse(json["modified_gmt"]);
     slug = json["slug"];

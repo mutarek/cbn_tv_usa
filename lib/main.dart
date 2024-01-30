@@ -1,5 +1,6 @@
 import 'package:cbn_tv_usa/app/module/category/controller/category_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
