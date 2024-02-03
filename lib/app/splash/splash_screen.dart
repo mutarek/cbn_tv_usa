@@ -43,25 +43,25 @@ class _SplashScreenState extends State<SplashScreen> {
             // fit: BoxFit.fitHeight,
           ),
           const SizedBox(height: 20),
-      SizedBox(
-        width: 250.0,
-        child: DefaultTextStyle(
-          style: const TextStyle(
-            fontSize: 32.0,
-            fontWeight: FontWeight.bold,
+          SizedBox(
+            width: 250.0,
+            child: DefaultTextStyle(
+              style: const TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  FadeAnimatedText('CBN'),
+                  FadeAnimatedText('CBN TV'),
+                  FadeAnimatedText('CBN TV USA'),
+                ],
+                onTap: () {
+                  print("Tap Event");
+                },
+              ),
+            ),
           ),
-          child: AnimatedTextKit(
-            animatedTexts: [
-              FadeAnimatedText('CBN'),
-              FadeAnimatedText('CBN TV'),
-              FadeAnimatedText('CBN TV USA'),
-            ],
-            onTap: () {
-              print("Tap Event");
-            },
-          ),
-        ),
-      ),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
