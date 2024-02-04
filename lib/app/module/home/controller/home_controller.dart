@@ -18,21 +18,24 @@ class HomeController with ChangeNotifier {
   bool isLoading = false;
   var currentIndex = 0;
   int page = 0;
+  int pageNumber = 1;
+  var isBottomLoading = false;
   final GlobalKey<CurvedNavigationBarState> bottomNavigationKey = GlobalKey();
 
   List<PostModel> postModelList = [];
 
   getAllPosts(bool isForAllPost, {int categoryCode = 113}) async {
     ApiResponse response;
-    postModelList.clear();
     isLoading = true;
     notifyListeners();
     if (isForAllPost) {
-      response = await homeRepository.getAllPosts();
+      response = await homeRepository.getAllPosts(pageNumber);
     } else {
+      postModelList.clear();
       response = await homeRepository.getAllPostsByCategory(categoryCode);
     }
     isLoading = false;
+    isBottomLoading = false;
     notifyListeners();
     if (response.response.statusCode == 200) {
       response.response.data.forEach((element) {
@@ -205,6 +208,13 @@ class HomeController with ChangeNotifier {
             .toLowerCase()
             .contains(value.toLowerCase()))
         .toList();
+    notifyListeners();
+  }
+
+  void getNextPage() {
+    pageNumber++;
+    isBottomLoading = true;
+    getAllPosts(true);
     notifyListeners();
   }
 

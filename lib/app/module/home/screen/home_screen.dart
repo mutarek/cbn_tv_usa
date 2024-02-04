@@ -28,7 +28,7 @@ class MainHomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: Image.asset("asset/images/logo.png",height: height * 0.06,),
           centerTitle: true,
-          iconTheme: IconThemeData(color: primaryColor),
+          iconTheme: const IconThemeData(color: primaryColor),
         ),
         drawer: const CustomDrawer(),
         body: pagesAll[controller.page],
@@ -38,24 +38,24 @@ class MainHomeScreen extends StatelessWidget {
           index: controller.currentIndex,
           items: <Widget>[
             bottomItem(
-                title: "TV",
+                title: "Video",
                 index: 0,
-                icon: Icons.live_tv,
+                icon: "asset/images/video.png",
                 controller: controller),
             bottomItem(
                 title: "Home",
                 index: 1,
-                icon: Icons.home,
+                icon: "asset/images/home.png",
                 controller: controller),
             bottomItem(
-                title: "Live",
+                title: "Category",
                 index: 2,
-                icon: Icons.category_outlined,
+                icon: "asset/images/categories.png",
                 controller: controller),
             bottomItem(
-                title: "Pages",
+                title: "Profile",
                 index: 3,
-                icon: Icons.pages,
+                icon: "asset/images/user.png",
                 controller: controller),
           ],
           color: Colors.transparent,
@@ -75,12 +75,12 @@ class MainHomeScreen extends StatelessWidget {
   Widget bottomItem(
       {required int index,
       required String title,
-      required IconData icon,
+      required String icon,
       required HomeController controller}) {
     if (index == controller.page) {
-      return Icon(
+      return Image.asset(
         icon,
-        size: 26,
+        height: 26,
         color: primaryColor,
       );
     } else {
@@ -89,9 +89,9 @@ class MainHomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            Image.asset(
               icon,
-              size: 22,
+              height: 22,
               color: Colors.grey,
             ),
             const SizedBox(height: 5),

@@ -9,10 +9,10 @@ class HomeRepository {
 
   HomeRepository({required this.dioClient});
 
-  Future<ApiResponse> getAllPosts() async {
+  Future<ApiResponse> getAllPosts(int page) async {
     Response response = Response(requestOptions: RequestOptions(path: '22222'));
     try {
-      response = await dioClient.get(AppConstant.postsUrl);
+      response = await dioClient.get(AppConstant.postsUrl+page.toString());
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e), response);

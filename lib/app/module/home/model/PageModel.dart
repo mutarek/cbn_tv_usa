@@ -19,7 +19,7 @@ class Guid {
   Guid({this.rendered});
 
   Guid.fromJson(Map<String, dynamic> json) {
-    rendered = json['rendereds'];
+    rendered = json['rendered'];
   }
 
   Map<String, dynamic> toJson() {
@@ -35,7 +35,7 @@ class Content {
   Content({this.rendered});
 
   Content.fromJson(Map<String, dynamic> json) {
-    rendered = json['rendereds'];
+    rendered = json['rendered'];
   }
 
   Map<String, dynamic> toJson() {

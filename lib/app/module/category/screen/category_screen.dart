@@ -1,6 +1,7 @@
 import 'package:cbn_tv_usa/app/module/category/controller/category_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/home_page.dart';
+import 'package:cbn_tv_usa/app/module/home/shimmers/category_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,7 @@ class CategoryScreen extends StatelessWidget {
       return Scaffold(
         body: controller.isLoading
             ? const Center(
-                child: CircularProgressIndicator(),
+                child: CategoryShimmer(),
               )
             : Padding(
                 padding: const EdgeInsets.all(16),

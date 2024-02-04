@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/detail_post_screen.dart';
+import 'package:cbn_tv_usa/app/module/home/shimmers/home_shimmer.dart';
+import 'package:cbn_tv_usa/app/utils/loading_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   late ScrollController _scrollViewController;
   bool _showAppbar = true;
   bool isScrollingDown = false;
+  ScrollController controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +26,27 @@ class _HomePageState extends State<HomePage> {
     double height = MediaQuery.of(context).size.height;
     return Consumer<HomeController>(builder: (context, controller, child) {
       return Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: Padding(
+            padding: const EdgeInsets.all(16),
+            child: controller.isBottomLoading
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : const SizedBox.shrink()),
         body: controller.isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? const HomeShimmer()
             : Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
                     _showAppbar
                         ? Container(
-                      height: 50,
-                          child: TextField(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(color: Colors.grey)),
+                            height: 50,
+                            child: TextField(
                               onChanged: (value) {
                                 controller.searchFromList(value);
                               },
@@ -46,15 +58,19 @@ class _HomePageState extends State<HomePage> {
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(8.0)))),
                             ),
-                        )
+                          )
                         : const SizedBox.shrink(),
                     const SizedBox(height: 10),
                     Expanded(
                       child: ListView.builder(
+                        shrinkWrap: true,
                         controller: _scrollViewController,
                         physics: const BouncingScrollPhysics(),
                         itemCount: controller.postModelList.length,
                         itemBuilder: (_, index) {
+                          if (index == controller.postModelList.length - 3) {
+                            controller.getNextPage();
+                          }
                           var data = controller.postModelList[index];
                           return InkWell(
                             onTap: () {
@@ -91,7 +107,10 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       placeholder: (context, url) =>
-                                          const CircularProgressIndicator(),
+                                          const LoaddingShimmer(
+                                        height: 150,
+                                        weight: double.infinity,
+                                      ),
                                       errorWidget: (context, url, error) =>
                                           const Icon(Icons.error),
                                     ),
@@ -122,6 +141,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    Provider.of<HomeController>(context, listen: false).getAllPosts(true);
     _scrollViewController = new ScrollController();
     _scrollViewController.addListener(() {
       if (_scrollViewController.position.userScrollDirection ==
