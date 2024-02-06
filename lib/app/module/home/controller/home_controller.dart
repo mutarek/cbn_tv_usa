@@ -175,8 +175,6 @@ class HomeController with ChangeNotifier {
   }
 
   void updatePageIndex(int position) {
-    updateCurrentIndex(0);
-    currentIndex = 0;
     pageIndex = position;
     notifyListeners();
   }

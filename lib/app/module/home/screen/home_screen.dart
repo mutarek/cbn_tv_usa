@@ -7,6 +7,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/app_colors.dart';
+import '../components/customize_drawer.dart';
 import 'home_page.dart';
 
 class MainHomeScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class MainHomeScreen extends StatelessWidget {
           centerTitle: true,
           iconTheme: const IconThemeData(color: primaryColor),
         ),
-        drawer: const CustomDrawer(),
+        drawer: const CustomizeDrawer(),
         body: pagesAll[controller.page],
         bottomNavigationBar: CurvedNavigationBar(
           key: controller.bottomNavigationKey,
