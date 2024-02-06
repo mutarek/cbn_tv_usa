@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       return Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(14),
             child: controller.isBottomLoading
                 ? const Center(
                     child: CircularProgressIndicator(),
