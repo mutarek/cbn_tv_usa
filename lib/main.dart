@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo apps',
+      title: 'CBN TV USA',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
         useMaterial3: true,
