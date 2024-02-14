@@ -1,11 +1,9 @@
 import 'package:cbn_tv_usa/app/module/category/controller/category_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/splash/splash_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'app/module/home/screen/home_screen.dart';
 import 'app/utils/app_colors.dart';
 import 'di_container.dart' as di;
 import 'package:flutter/services.dart';
@@ -37,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

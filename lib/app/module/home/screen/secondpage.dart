@@ -1,3 +1,4 @@
+import 'package:cbn_tv_usa/app/module/auth/screen/welcome_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/profile_menu_widget.dart';
 import 'package:cbn_tv_usa/app/utils/app_colors.dart';
@@ -58,7 +59,9 @@ class PageScreen extends StatelessWidget {
                 SizedBox(
                   width: 200,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (builder)=> WelcomeScreen()));
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: primaryColor,
                         side: BorderSide.none,
