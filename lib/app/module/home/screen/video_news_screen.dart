@@ -8,7 +8,7 @@ class VideoNewsScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Expanded(

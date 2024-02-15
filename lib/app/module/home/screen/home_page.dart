@@ -22,7 +22,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Consumer<HomeController>(builder: (context, controller, child) {
       return Scaffold(
@@ -142,7 +141,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     Provider.of<HomeController>(context, listen: false).getAllPosts(true);
-    _scrollViewController = new ScrollController();
+    _scrollViewController = ScrollController();
     _scrollViewController.addListener(() {
       if (_scrollViewController.position.userScrollDirection ==
           ScrollDirection.reverse) {

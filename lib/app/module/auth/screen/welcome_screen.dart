@@ -48,11 +48,11 @@ class MobileWelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const WelcomeImage(),
-        const Row(
+        WelcomeImage(),
+        Row(
           children: [
             Spacer(),
             Expanded(

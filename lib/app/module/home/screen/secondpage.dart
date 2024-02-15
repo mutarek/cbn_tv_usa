@@ -60,7 +60,7 @@ class PageScreen extends StatelessWidget {
                   width: 200,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (builder)=> WelcomeScreen()));
+                      Navigator.push(context,MaterialPageRoute(builder: (builder)=> const WelcomeScreen()));
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: primaryColor,

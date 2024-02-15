@@ -1,5 +1,4 @@
 import 'package:cbn_tv_usa/app/module/category/screen/category_screen.dart';
-import 'package:cbn_tv_usa/app/module/home/components/custom_drawer.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/secondpage.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/video_news_screen.dart';

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:cbn_tv_usa/app/module/home/screen/home_page.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/home_screen.dart';
 import 'package:cbn_tv_usa/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: primaryColor.withOpacity(0.5),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,6 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
               style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
               child: AnimatedTextKit(
                 animatedTexts: [
@@ -55,9 +55,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   FadeAnimatedText('CBN TV'),
                   FadeAnimatedText('CBN TV USA'),
                 ],
-                onTap: () {
-                  print("Tap Event");
-                },
               ),
             ),
           ),
@@ -67,13 +64,14 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox(width: 20.0, height: 100.0),
               const Text(
                 'To',
-                style: TextStyle(fontSize: 43.0),
+                style: TextStyle(fontSize: 43.0,color: Colors.white),
               ),
               const SizedBox(width: 20.0, height: 100.0),
               DefaultTextStyle(
                 style: const TextStyle(
                   fontSize: 40.0,
                   fontFamily: 'Horizon',
+                  color: Colors.white
                 ),
                 child: AnimatedTextKit(
                   animatedTexts: [
@@ -81,9 +79,6 @@ class _SplashScreenState extends State<SplashScreen> {
                     RotateAnimatedText('See'),
                     RotateAnimatedText('Know & See'),
                   ],
-                  onTap: () {
-                    print("Tap Event");
-                  },
                 ),
               ),
             ],
