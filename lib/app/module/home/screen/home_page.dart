@@ -80,50 +80,56 @@ class _HomePageState extends State<HomePage> {
                                       builder: (builder) =>
                                           const DetailPostScreen()));
                             },
-                            child: Container(
-                              margin: const EdgeInsets.all(5),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: CachedNetworkImage(
-                                      height: height * 0.2,
-                                      imageUrl: (data.yoast_head_json
-                                              ?.ogImage[0].url ??
-                                          ""),
-                                      imageBuilder: (context, imageProvider) =>
-                                          Container(
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: imageProvider,
-                                              fit: BoxFit.cover,
-                                              colorFilter:
-                                                  const ColorFilter.mode(
-                                                      Colors.red,
-                                                      BlendMode.colorBurn)),
+                            child: Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                margin: const EdgeInsets.all(7),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: CachedNetworkImage(
+                                        height: height * 0.2,
+                                        imageUrl: (data.yoast_head_json
+                                                ?.ogImage[0].url ??
+                                            ""),
+                                        imageBuilder: (context, imageProvider) =>
+                                            Container(
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: imageProvider,
+                                                fit: BoxFit.cover,
+                                            ),
+                                          ),
                                         ),
+                                        placeholder: (context, url) =>
+                                            const LoaddingShimmer(
+                                          height: 150,
+                                          weight: double.infinity,
+                                        ),
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(Icons.error),
                                       ),
-                                      placeholder: (context, url) =>
-                                          const LoaddingShimmer(
-                                        height: 150,
-                                        weight: double.infinity,
-                                      ),
-                                      errorWidget: (context, url, error) =>
-                                          const Icon(Icons.error),
                                     ),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Text(data.title?.rendered ?? "",
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                      )),
-                                  const SizedBox(height: 5),
-                                  Text(
-                                      "প্রকাশিত : ${controller.enDaytoBdDay(data.date?.day ?? 0)} ${controller.enMonthtoBdMonth(data.date?.month ?? 1)}")
-                                ],
+                                    const SizedBox(height: 5),
+                                    Text(data.title?.rendered ?? "",
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                        )),
+                                    const SizedBox(height: 5),
+                                    Text(
+                                        "প্রকাশিত : ${controller.enDaytoBdDay(data.date?.day ?? 0)} ${controller.enMonthtoBdMonth(data.date?.month ?? 1)}")
+                                  ],
+                                ),
                               ),
                             ),
                           );

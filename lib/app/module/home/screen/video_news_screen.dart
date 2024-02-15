@@ -1,27 +1,54 @@
+import 'package:cbn_tv_usa/app/module/home/screen/live_tv_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
-class VideoNewsScreen extends StatelessWidget {
+class VideoNewsScreen extends StatefulWidget {
   const VideoNewsScreen({super.key});
+
+  @override
+  State<VideoNewsScreen> createState() => _VideoNewsScreenState();
+}
+
+class _VideoNewsScreenState extends State<VideoNewsScreen> {
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the video player controller with your live streaming video URL
+    _controller = VideoPlayerController.network(
+        'https://www.youtube.com/watch?v=AcJXWj5k2SA');
+    _controller.initialize().then((_) {
+      // Ensure the first frame is shown after the video is initialized
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    // return Scaffold(
+    //   body: Padding(
+    //     padding: const EdgeInsets.all(16),
+    //     child: Column(
+    //       children: [
+    //         Expanded(
+    //           child: ListView.builder(
+    //             itemCount: 3,
+    //             itemBuilder: (_, index) {
+    //               return videoWidget(context, height);
+    //             },
+    //           ),
+    //         )
+    //       ],
+    //     ),
+    //   ),
+    // );
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (_, index) {
-                  return videoWidget(context, height);
-                },
-              ),
-            )
-          ],
-        ),
+      appBar: AppBar(
+        title: Text('Embedded Live Streaming Video'),
       ),
+      body: LiveTVScreen()
     );
   }
 
@@ -51,5 +78,11 @@ class VideoNewsScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }

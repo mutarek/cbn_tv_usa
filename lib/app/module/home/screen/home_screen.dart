@@ -8,24 +8,36 @@ import 'package:provider/provider.dart';
 import '../../../utils/app_colors.dart';
 import '../components/customize_drawer.dart';
 import 'home_page.dart';
+import 'live_tv_screen.dart';
 
-class MainHomeScreen extends StatelessWidget {
+class MainHomeScreen extends StatefulWidget {
   MainHomeScreen({super.key});
 
+  @override
+  State<MainHomeScreen> createState() => _MainHomeScreenState();
+}
+
+class _MainHomeScreenState extends State<MainHomeScreen> {
   var pagesAll = [
-    const VideoNewsScreen(),
+    const LiveTVScreen(),
     const HomePage(),
     const CategoryScreen(),
     const PageScreen()
   ];
 
   @override
+  void initState() {
+    Provider.of<HomeController>(context, listen: false).getAllPosts(true);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    Provider.of<HomeController>(context, listen: false).getAllPosts(true);
     return Consumer<HomeController>(builder: (context, controller, child) {
       return Scaffold(
         appBar: AppBar(
+          elevation: 1.5,
           title: Image.asset("asset/images/logo.png",height: height * 0.06,),
           centerTitle: true,
           iconTheme: const IconThemeData(color: primaryColor),
@@ -61,7 +73,7 @@ class MainHomeScreen extends StatelessWidget {
           color: Colors.transparent,
           buttonBackgroundColor: Colors.white,
           backgroundColor: Colors.transparent,
-          //animationCurve: Curves.easeInOut,
+          animationCurve: Curves.easeOutSine,
           //animationDuration: const Duration(milliseconds: 600),
           onTap: (index) {
             controller.updateCurrentIndex(index);
@@ -78,14 +90,16 @@ class MainHomeScreen extends StatelessWidget {
       required String icon,
       required HomeController controller}) {
     if (index == controller.page) {
-      return Image.asset(
-        icon,
-        height: 26,
-        color: primaryColor,
+      return CircleAvatar(
+        child: Image.asset(
+          icon,
+          height: 22,
+          color: primaryColor,
+        ),
       );
     } else {
       return Padding(
-        padding: const EdgeInsets.only(top: 6),
+        padding: const EdgeInsets.only(top: 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
