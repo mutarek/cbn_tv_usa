@@ -29,27 +29,12 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
         padding: EdgeInsets.all(16),
         children: [
           // You can embed the video using an iframe or any HTML tag
-//           HtmlWidget(
-//             """
-// <iframe src="https://bradmax.com/client/embed-player/7cff169de3f966672f27976d1977eebca025271c_13416?mediaUrl=https%3A%2F%2Flive.cbntvusa.net%2Fhls%2Fcbntv%2Findex.m3u8&mediaUrl2=https%3A%2F%2Flive.cbntvusa.net%2Fhls%2Fcbntv%2Findex.m3u8&duration=734.097415" width="100%" height="400" frameBorder="0" style="width: 100%;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-//               """,
-//           ),
-//           SizedBox(height: 20),
-          Container(
-              child: WebView(
-            initialUrl: 'data:text/html;base64,$contentBase64',
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (WebViewController webViewController) {
-              _controller.complete(webViewController);
-            },
-            onPageStarted: (String url) {
-              print('Page started loading: $url');
-            },
-            onPageFinished: (String url) {
-              print('Page finished loading: $url');
-            },
-            gestureNavigationEnabled: true,
-          )),
+          HtmlWidget(
+            """
+<iframe src="https://bradmax.com/client/embed-player/7cff169de3f966672f27976d1977eebca025271c_13416?mediaUrl=https%3A%2F%2Flive.cbntvusa.net%2Fhls%2Fcbntv%2Findex.m3u8&mediaUrl2=https%3A%2F%2Flive.cbntvusa.net%2Fhls%2Fcbntv%2Findex.m3u8&duration=734.097415" width="100%" height="400" frameBorder="0" style="width: 100%;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              """,
+          ),
+          SizedBox(height: 20),
           // Or you can use the video player directly
           ///EmbeddedVideoScreen(),
         ],

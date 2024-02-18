@@ -81,9 +81,10 @@ class _HomePageState extends State<HomePage> {
                                           const DetailPostScreen()));
                             },
                             child: Card(
+                              elevation: 0.7,
                               color: Colors.white,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)
+                                borderRadius: BorderRadius.circular(15),
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
