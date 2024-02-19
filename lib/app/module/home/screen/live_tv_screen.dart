@@ -26,15 +26,26 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.all(16),
         children: [
-          // You can embed the video using an iframe or any HTML tag
           HtmlWidget(
             """
 <iframe src="https://bradmax.com/client/embed-player/7cff169de3f966672f27976d1977eebca025271c_13416?mediaUrl=https%3A%2F%2Flive.cbntvusa.net%2Fhls%2Fcbntv%2Findex.m3u8&mediaUrl2=https%3A%2F%2Flive.cbntvusa.net%2Fhls%2Fcbntv%2Findex.m3u8&duration=734.097415" width="100%" height="400" frameBorder="0" style="width: 100%;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
               """,
           ),
           SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("More Tv Channels",style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16
+                )),
+              ],
+            ),
+          )
           // Or you can use the video player directly
           ///EmbeddedVideoScreen(),
         ],
