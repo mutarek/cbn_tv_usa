@@ -39,7 +39,7 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("More Tv Channels",style: TextStyle(
+                Text("More Tv Channel",style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16
                 )),
