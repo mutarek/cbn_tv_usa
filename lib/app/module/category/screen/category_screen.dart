@@ -32,7 +32,7 @@ class CategoryScreen extends StatelessWidget {
                             controller.updateCategoriesWisePost(data.id);
                           },
                           child: Card(
-                            elevation: 0.8,
+                            elevation: 4,
                             child: Container(
                               padding: const EdgeInsets.only(
                                   top: 10, bottom: 10, left: 5, right: 5),
@@ -51,6 +51,7 @@ class CategoryScreen extends StatelessWidget {
                           top: 10,
                           right: 10,
                           child: CircleAvatar(
+                            backgroundColor: Colors.white,
                             radius: 15,
                             child: Padding(
                               padding: const EdgeInsets.all(2),

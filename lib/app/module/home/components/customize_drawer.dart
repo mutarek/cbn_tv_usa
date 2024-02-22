@@ -32,18 +32,18 @@ class _CustomizeDrawerState extends State<CustomizeDrawer> {
             child: Column(
               children: <Widget>[
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 DrawerHeader(
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                   ),
                   child: SizedBox(
-                      height: 142,
-                      width: MediaQuery.of(context).size.width,
+                      height: 100,
+                      width: MediaQuery.of(context).size.width/2,
                       child: Image.asset(
                         "asset/images/logo.png",
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                       )),
                 ),
                 Expanded(
@@ -57,44 +57,52 @@ class _CustomizeDrawerState extends State<CustomizeDrawer> {
                       itemCount: controller.pageList.length,
                       itemBuilder: (_, index) {
                         var page = controller.pageList[index];
-                        return Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.grey.withOpacity(0.2)),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: ListTile(
-                            title: Text((page.title?.rendered ?? "")
-                                .capitalizeFirst
-                                .toString()),
-                            trailing: const Icon(
-                              Icons.arrow_forward_ios_outlined,
-                              size: 16,
+                        return Card(
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)
+                          ),
+                          child: Container(
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: ListTile(
+                              title: Text((page.title?.rendered ?? "")
+                                  .capitalizeFirst
+                                  .toString(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  fontFamily: "Poppins"
+                                ),),
+                              trailing: const Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                size: 16,
+                              ),
+                              onTap: () {
+                                controller.updatePageIndex(index);
+                                Navigator.pop(context);
+                                Navigator.push(context, MaterialPageRoute(builder: (builder)=> PageDetailsScreen()));
+                              },
                             ),
-                            onTap: () {
-                              controller.updatePageIndex(index);
-                              Navigator.pop(context);
-                              Navigator.push(context, MaterialPageRoute(builder: (builder)=> PageDetailsScreen()));
-                            },
                           ),
                         );
                       },
                     ),
                   ),
                 ),
+                SizedBox(height: 20),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    height: 65,
+                    height: 45,
                     width: MediaQuery.of(context).size.width,
-                    color: primaryColor,
                     child: const Center(
                       child: Text(
                         'v1.0.1',
                         style: TextStyle(
                           fontFamily: 'Avenir',
                           fontSize: 20,
-                          color: Color(0xffffffff),
+                          color: primaryColor,
                         ),
                         textAlign: TextAlign.center,
                       ),

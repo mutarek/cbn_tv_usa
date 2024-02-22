@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5), () async {
+    Timer(const Duration(seconds: 3), () async {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (builder) => MainHomeScreen()),
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: primaryColor.withOpacity(0.5),
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,42 +47,40 @@ class _SplashScreenState extends State<SplashScreen> {
               style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: primaryColor,
               ),
               child: AnimatedTextKit(
                 animatedTexts: [
-                  FadeAnimatedText('CBN'),
-                  FadeAnimatedText('CBN TV'),
                   FadeAnimatedText('CBN TV USA'),
                 ],
               ),
             ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const SizedBox(width: 20.0, height: 100.0),
-              const Text(
-                'To',
-                style: TextStyle(fontSize: 43.0,color: Colors.white),
-              ),
-              const SizedBox(width: 20.0, height: 100.0),
-              DefaultTextStyle(
-                style: const TextStyle(
-                  fontSize: 40.0,
-                  fontFamily: 'Horizon',
-                  color: Colors.white
-                ),
-                child: AnimatedTextKit(
-                  animatedTexts: [
-                    RotateAnimatedText('Know'),
-                    RotateAnimatedText('See'),
-                    RotateAnimatedText('Know & See'),
-                  ],
-                ),
-              ),
-            ],
-          )
+          // Row(
+          //   mainAxisSize: MainAxisSize.min,
+          //   children: <Widget>[
+          //     const SizedBox(width: 20.0, height: 100.0),
+          //     const Text(
+          //       'To',
+          //       style: TextStyle(fontSize: 43.0,color: Colors.white),
+          //     ),
+          //     const SizedBox(width: 20.0, height: 100.0),
+          //     DefaultTextStyle(
+          //       style: const TextStyle(
+          //         fontSize: 40.0,
+          //         fontFamily: 'Horizon',
+          //         color: Colors.white
+          //       ),
+          //       child: AnimatedTextKit(
+          //         animatedTexts: [
+          //           RotateAnimatedText('Know'),
+          //           RotateAnimatedText('See'),
+          //           RotateAnimatedText('Know & See'),
+          //         ],
+          //       ),
+          //     ),
+          //   ],
+          // )
         ],
       ),
     );

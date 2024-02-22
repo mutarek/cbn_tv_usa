@@ -1,8 +1,10 @@
 import 'package:cbn_tv_usa/app/module/category/screen/category_screen.dart';
+import 'package:cbn_tv_usa/app/module/home/components/search_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/secondpage.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/video_news_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/app_colors.dart';
@@ -41,6 +43,14 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           title: Image.asset("asset/images/logo.png",height: height * 0.06,),
           centerTitle: true,
           iconTheme: const IconThemeData(color: primaryColor),
+          actions: [
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (builder)=> SearchScreen()));
+              },
+                child: Icon(CupertinoIcons.search)),
+            SizedBox(width: 15)
+          ],
         ),
         drawer: const CustomizeDrawer(),
         body: pagesAll[controller.page],

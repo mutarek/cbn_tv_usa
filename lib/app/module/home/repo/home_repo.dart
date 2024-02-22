@@ -49,4 +49,14 @@ class HomeRepository {
     }
   }
 
+  Future<ApiResponse> getSearchResult(String value) async {
+    Response response = Response(requestOptions: RequestOptions(path: '22222'));
+    try {
+      response = await dioClient.get(AppConstant.search+value+AppConstant.searchEndPoint);
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e), response);
+    }
+  }
+
 }

@@ -159,7 +159,11 @@ class HomeController with ChangeNotifier {
     notifyListeners();
     if (response.response.statusCode == 200) {
       response.response.data.forEach((element) {
-        categoryList.add(CategoryModel.fromJson(element));
+        var single = CategoryModel.fromJson(element);
+        if (single.name == "Uncategorized") {
+        } else {
+          categoryList.add(CategoryModel.fromJson(element));
+        }
       });
     } else {
       Fluttertoast.showToast(msg: response.response.statusMessage!);
@@ -200,13 +204,23 @@ class HomeController with ChangeNotifier {
 
   List<PostModel> searchModelList = [];
 
-  void searchFromList(String value) {
-    searchModelList = postModelList
-        .where((item) => (item.title?.rendered ?? "")
-            .toLowerCase()
-            .contains(value.toLowerCase()))
-        .toList();
+  void searchFromList(String value) async{
+    isLoading = true;
     notifyListeners();
+    ApiResponse response;
+    response = await homeRepository.getSearchResult(value);
+    isLoading = false;
+    notifyListeners();
+    if (response.response.statusCode == 200) {
+      searchModelList.clear();
+      response.response.data.forEach((element) {
+        //searchModelList.add(PostModel.fromJson(element));
+        print("<<<<<<<<<<<<<<<<<<<<<<<<${element}>>>>>>>>>>>>>>>>>>>");
+      });
+    } else {
+      Fluttertoast.showToast(msg: response.response.statusMessage!);
+    }
+
   }
 
   void getNextPage() {
