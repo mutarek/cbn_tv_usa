@@ -15,6 +15,7 @@ class DetailPostScreen extends StatelessWidget {
       var data = controller.postModelList[controller.postIndex];
       return Scaffold(
         appBar: AppBar(
+          elevation: 10,
           title: Text(data.title?.rendered ?? ""),
         ),
         body: ListView(
@@ -30,8 +31,7 @@ class DetailPostScreen extends StatelessWidget {
                     image: DecorationImage(
                         image: imageProvider,
                         fit: BoxFit.cover,
-                        colorFilter: const ColorFilter.mode(
-                            Colors.red, BlendMode.colorBurn)),
+                    ),
                   ),
                 ),
                 placeholder: (context, url) =>
@@ -39,6 +39,9 @@ class DetailPostScreen extends StatelessWidget {
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
+            SizedBox(height: 10),
+            Text(
+                "প্রকাশিত : ${data.date?.day ?? 0} ${controller.enMonthtoBdMonth(data.date?.month ?? 1)} ${controller.enMonthtoBdMonth(data.date?.year ?? 1)}"),
             const SizedBox(height: 10),
             Text(
               data.title?.rendered ?? "",
@@ -47,7 +50,11 @@ class DetailPostScreen extends StatelessWidget {
             const SizedBox(height: 10),
             HtmlWidget(data.content?.rendered ?? "",customStylesBuilder: (element) {
               return {
-                'font-size': '50px',
+                "font-family": "Shurjo",
+                'font-size': '18px',
+                'font-weight': '400',
+                'font-display': 'swap',
+                'url':"https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-ef9e058ccc3a98d85030.woff2"
               };
             },),
           ],

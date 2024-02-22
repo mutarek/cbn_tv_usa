@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/detail_post_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/shimmers/home_shimmer.dart';
+import 'package:cbn_tv_usa/app/utils/app_colors.dart';
 import 'package:cbn_tv_usa/app/utils/loading_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -36,21 +37,21 @@ class _HomePageState extends State<HomePage> {
         body: controller.isLoading
             ? const HomeShimmer()
             : Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(12),
                 child: Column(
                   children: [
                     _showAppbar
                         ? Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                border: Border.all(color: Colors.grey)),
+                                border: Border.all(color: primaryColor)),
                             height: 50,
                             child: TextField(
                               onChanged: (value) {
                                 controller.searchFromList(value);
                               },
                               decoration: const InputDecoration(
-                                  labelText: "Search",
+                                contentPadding: EdgeInsets.only(left: 10),
                                   hintText: "Search News",
                                   suffixIcon: Icon(Icons.search),
                                   border: OutlineInputBorder(
@@ -82,7 +83,6 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Card(
                               elevation: 0.7,
-                              color: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -123,12 +123,12 @@ class _HomePageState extends State<HomePage> {
                                     const SizedBox(height: 5),
                                     Text(data.title?.rendered ?? "",
                                         style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
+                                          fontWeight: FontWeight.w600,
                                           fontSize: 16,
                                         )),
                                     const SizedBox(height: 5),
                                     Text(
-                                        "প্রকাশিত : ${controller.enDaytoBdDay(data.date?.day ?? 0)} ${controller.enMonthtoBdMonth(data.date?.month ?? 1)}")
+                                        "প্রকাশিত : ${data.date?.day ?? 0} ${controller.enMonthtoBdMonth(data.date?.month ?? 1)} ${controller.enMonthtoBdMonth(data.date?.year ?? 1)}"),
                                   ],
                                 ),
                               ),
