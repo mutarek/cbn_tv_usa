@@ -45,7 +45,11 @@ class DetailPostScreen extends StatelessWidget {
               style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: 10),
-            HtmlWidget(data.content?.rendered ?? ""),
+            HtmlWidget(data.content?.rendered ?? "",customStylesBuilder: (element) {
+              return {
+                'font-size': '50px',
+              };
+            },),
           ],
         ),
       );
