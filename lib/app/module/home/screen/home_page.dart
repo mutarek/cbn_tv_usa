@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                     //         ),
                     //       )
                     //     : const SizedBox.shrink(),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     Expanded(
                       child: ListView.builder(
                               shrinkWrap: true,
