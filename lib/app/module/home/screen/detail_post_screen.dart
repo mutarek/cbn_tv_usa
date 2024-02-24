@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
+import 'package:custom_social_share/custom_social_share.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_wordpress_content/wp_content.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -57,6 +59,21 @@ class DetailPostScreen extends StatelessWidget {
                 'url':"https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-ef9e058ccc3a98d85030.woff2"
               };
             },),
+            InkWell(
+              onTap: ()async{
+                 await CustomSocialShare().getInstalledAppsForShare();
+              },
+                child: Wrap(
+                  children: [
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          child: Image.asset("asset/icons/imo_icon.png")
+                        )
+                      ],
+                    )
+                  ],
+                )),
           ],
         ),
       );

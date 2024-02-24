@@ -161,6 +161,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  custom_social_share:
+    dependency: "direct main"
+    description:
+      name: custom_social_share
+      sha256: "46330790b2678a99f35c193c3243da7705194cc8fd8c725a330d7c805d26f46f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.7"
   dio:
     dependency: "direct main"
     description:
