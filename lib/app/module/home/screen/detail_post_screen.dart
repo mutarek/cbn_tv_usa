@@ -59,21 +59,60 @@ class DetailPostScreen extends StatelessWidget {
                 'url':"https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-ef9e058ccc3a98d85030.woff2"
               };
             },),
+            Text("Share this post",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600)),
+            SizedBox(height: 15),
             InkWell(
               onTap: ()async{
                  await CustomSocialShare().getInstalledAppsForShare();
               },
                 child: Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
                   children: [
                     Column(
                       children: [
                         CircleAvatar(
+                          radius:25,
                           child: Image.asset("asset/icons/imo_icon.png")
-                        )
+                        ),
+                        SizedBox(height: 5),
+                        Text("Imo",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 16),)
                       ],
-                    )
+                    ),
+                    Column(
+                      children: [
+                        CircleAvatar(
+                            radius:25,
+                            child: Image.asset("asset/icons/whatsapp_icon.png")
+                        ),
+                        SizedBox(height: 5),
+                        Text("Whatsapp",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 16),)
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        CircleAvatar(
+                            radius:25,
+                            child: Image.asset("asset/icons/option.png")
+                        ),
+                        SizedBox(height: 5),
+                        Text("Messenger",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 16),)
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        CircleAvatar(
+                            radius:25,
+                            child: Image.asset("asset/icons/others_share.png")
+                        ),
+                        SizedBox(height: 5),
+                        Text("Others",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 16),)
+                      ],
+                    ),
+
                   ],
                 )),
+            SizedBox(height: 30),
           ],
         ),
       );
