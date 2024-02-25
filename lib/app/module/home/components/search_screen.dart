@@ -55,11 +55,31 @@ class SearchScreen extends StatelessWidget {
                   child: controller.isLoading?
                       Center(
                         child: CircularProgressIndicator(),
-                      ):ListView.builder(
-                    itemCount: 10,
+                      ):controller.searchModelList.isNotEmpty?
+                  ListView.builder(
+                    itemCount: controller.searchModelList.length,
                     itemBuilder: (_,index){
-                      return ListTile();
+                      var data = controller.searchModelList[index];
+                      return Row(
+                        children: [
+                          Image.asset("asset/images/logo.png",height: 100,
+                              width: 100),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: Text(data.title?.rendered ?? ""),
+                          )
+                        ],
+                      );
                     },
+                  ):Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.do_not_disturb_alt,size: 75),
+                      SizedBox(height: 10),
+                      Text("Search result not found",style: TextStyle(
+                        fontSize: 25
+                      ),),
+                    ],
                   ),
                 )
               ],

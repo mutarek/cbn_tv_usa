@@ -1,5 +1,6 @@
 import 'package:cbn_tv_usa/app/module/home/model/PageModel.dart';
 import 'package:cbn_tv_usa/app/module/home/model/PostModel.dart';
+import 'package:cbn_tv_usa/app/module/home/model/search_model.dart';
 import 'package:cbn_tv_usa/app/module/home/repo/home_repo.dart';
 import 'package:cbn_tv_usa/app/remote/response/api_response.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -202,9 +203,10 @@ class HomeController with ChangeNotifier {
     }
   }
 
-  List<PostModel> searchModelList = [];
+  List<SearchModel> searchModelList = [];
 
   void searchFromList(String value) async{
+    searchModelList.clear();
     isLoading = true;
     notifyListeners();
     ApiResponse response;
@@ -214,7 +216,7 @@ class HomeController with ChangeNotifier {
     if (response.response.statusCode == 200) {
       searchModelList.clear();
       response.response.data.forEach((element) {
-        //searchModelList.add(PostModel.fromJson(element));
+        searchModelList.add(SearchModel.fromJson(element));
         print("<<<<<<<<<<<<<<<<<<<<<<<<${element}>>>>>>>>>>>>>>>>>>>");
       });
     } else {
