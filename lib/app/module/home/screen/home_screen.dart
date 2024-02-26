@@ -2,7 +2,6 @@ import 'package:cbn_tv_usa/app/module/category/screen/category_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/components/search_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/secondpage.dart';
-import 'package:cbn_tv_usa/app/module/home/screen/video_news_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

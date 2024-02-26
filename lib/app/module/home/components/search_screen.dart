@@ -1,4 +1,5 @@
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
+import 'package:cbn_tv_usa/app/module/home/screen/search_details_post.dart';
 import 'package:cbn_tv_usa/app/utils/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,15 +61,21 @@ class SearchScreen extends StatelessWidget {
                     itemCount: controller.searchModelList.length,
                     itemBuilder: (_,index){
                       var data = controller.searchModelList[index];
-                      return Row(
-                        children: [
-                          Image.asset("asset/images/logo.png",height: 100,
-                              width: 100),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text(data.title?.rendered ?? ""),
-                          )
-                        ],
+                      return InkWell(
+                        onTap: (){
+                          controller.updateSearchIndex(index);
+                          Navigator.push(context, MaterialPageRoute(builder: (builder)=> SearchDetailPost()));
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset("asset/images/logo.png",height: 100,
+                                width: 100),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Text(data.title?.rendered ?? ""),
+                            )
+                          ],
+                        ),
                       );
                     },
                   ):Column(

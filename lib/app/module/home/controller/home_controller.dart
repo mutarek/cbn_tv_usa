@@ -14,7 +14,9 @@ class HomeController with ChangeNotifier {
 
   HomeController({required this.homeRepository});
 
+  bool isFromSearch = false;
   var postIndex = -1;
+  var searchPostIndex = -1;
   var pageIndex = 0;
   bool isLoading = false;
   var currentIndex = 0;
@@ -56,6 +58,11 @@ class HomeController with ChangeNotifier {
 
   updatePostIndex(int index) {
     postIndex = index;
+    notifyListeners();
+  }
+
+  updateSearchIndex(int index) {
+    searchPostIndex = index;
     notifyListeners();
   }
 
