@@ -61,8 +61,63 @@ class _HomePageState extends State<HomePage> {
                     //       )
                     //     : const SizedBox.shrink(),
                     SizedBox(height: 10),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      height: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: primaryColor2),
+                          borderRadius: BorderRadius.circular(8)
+                      ),
+                      child: Center(child: Text("Custom Ads Box")),
+                    ),
                     Expanded(
-                      child: ListView.builder(
+                      child: ListView.separated(
+                        separatorBuilder: (_,position){
+                          return position.isOdd ?Container(
+                            margin: EdgeInsets.all(5),
+                            height: 100,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: primaryColor2),
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            child: Center(child: Text("Custom Ads Box")),
+                          ):SizedBox();
+                          // Card(
+                          //   elevation: 0.7,
+                          //   shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(15),
+                          //   ),
+                          //   child: Container(
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(15),
+                          //     ),
+                          //     margin: const EdgeInsets.all(7),
+                          //     child: Column(
+                          //       mainAxisAlignment:
+                          //       MainAxisAlignment.start,
+                          //       crossAxisAlignment:
+                          //       CrossAxisAlignment.start,
+                          //       children: [
+                          //         Container(
+                          //           height: 150,
+                          //           decoration: BoxDecoration(
+                          //             borderRadius: BorderRadius.circular(8),
+                          //             color: Colors.teal
+                          //           ),
+                          //         ),
+                          //         const SizedBox(height: 5),
+                          //         Text("Ads Text",
+                          //             style: const TextStyle(
+                          //               fontWeight: FontWeight.w600,
+                          //               fontSize: 16,
+                          //             )),
+                          //         const SizedBox(height: 5),
+                          //         Text("Sponsord")
+                          //       ],
+                          //     ),
+                          //   ),
+                          // );
+                        },
                               shrinkWrap: true,
                               controller: _scrollViewController,
                               physics: const BouncingScrollPhysics(),

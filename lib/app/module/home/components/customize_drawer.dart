@@ -31,21 +31,21 @@ class _CustomizeDrawerState extends State<CustomizeDrawer> {
           child: Drawer(
             child: Column(
               children: <Widget>[
-                const SizedBox(
-                  height: 10,
-                ),
-                DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                  ),
-                  child: SizedBox(
-                      height: 70,
-                      width: MediaQuery.of(context).size.width/3,
-                      child: Image.asset(
-                        "asset/images/logo.png",
-                        fit: BoxFit.contain,
-                      )),
-                ),
+                // DrawerHeader(
+                //   decoration: BoxDecoration(
+                //     color: Colors.transparent,
+                //   ),
+                //   child: Image.asset(
+                //     "asset/images/logo.png",
+                //     fit: BoxFit.contain,
+                //     height: 50,
+                //     width: 50,
+                //   ),
+                // ),
+                SizedBox(height: 30),
+                Image.asset("asset/images/logo.png",
+                height: 80,
+                width: 100,),
                 Expanded(
                   child: controller.isLoading
                       ? const Center(
@@ -63,7 +63,7 @@ class _CustomizeDrawerState extends State<CustomizeDrawer> {
                             borderRadius: BorderRadius.circular(8)
                           ),
                           child: Container(
-                            margin: const EdgeInsets.all(5),
+                            margin: const EdgeInsets.all(3),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8)),
                             child: ListTile(
