@@ -1,3 +1,4 @@
+import 'package:cbn_tv_usa/app/module/auth/components/custom_popup.dart';
 import 'package:cbn_tv_usa/app/module/home/model/PageModel.dart';
 import 'package:cbn_tv_usa/app/module/home/model/PostModel.dart';
 import 'package:cbn_tv_usa/app/module/home/model/search_model.dart';
@@ -6,6 +7,7 @@ import 'package:cbn_tv_usa/app/remote/response/api_response.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 import '../../category/model/category_model.dart';
 
@@ -28,6 +30,7 @@ class HomeController with ChangeNotifier {
   List<PostModel> postModelList = [];
 
   getAllPosts(bool isForAllPost, {int categoryCode = 113}) async {
+    //CustomPopUp.showLoadingDialog(context: Get.context!);
     ApiResponse response;
     isLoading = true;
     notifyListeners();
@@ -37,6 +40,8 @@ class HomeController with ChangeNotifier {
       postModelList.clear();
       response = await homeRepository.getAllPostsByCategory(categoryCode);
     }
+    //Get.back();
+    //CustomPopUp.hideLoadingDialog(context: Get.context!);
     isLoading = false;
     isBottomLoading = false;
     notifyListeners();

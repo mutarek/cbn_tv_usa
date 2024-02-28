@@ -39,8 +39,8 @@ class _CustomizeDrawerState extends State<CustomizeDrawer> {
                     color: Colors.transparent,
                   ),
                   child: SizedBox(
-                      height: 100,
-                      width: MediaQuery.of(context).size.width/2,
+                      height: 70,
+                      width: MediaQuery.of(context).size.width/3,
                       child: Image.asset(
                         "asset/images/logo.png",
                         fit: BoxFit.contain,
