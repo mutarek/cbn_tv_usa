@@ -7,6 +7,8 @@ import 'package:flutter_wordpress_content/wp_content.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
+import '../../../utils/app_colors.dart';
+
 class DetailPostScreen extends StatelessWidget {
   const DetailPostScreen({super.key});
 
@@ -23,6 +25,16 @@ class DetailPostScreen extends StatelessWidget {
         body: ListView(
           padding: const EdgeInsets.all(16),
           children: [
+            Container(
+              margin: EdgeInsets.all(5),
+              height: height * 0.1,
+              decoration: BoxDecoration(
+                  border: Border.all(color: primaryColor2),
+                  borderRadius: BorderRadius.circular(8)
+              ),
+              child: Center(child: Text("Custom Ads Box")),
+            ),
+            SizedBox(height: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: CachedNetworkImage(
@@ -45,6 +57,16 @@ class DetailPostScreen extends StatelessWidget {
             Text(
                 "প্রকাশিত : ${data.date?.day ?? 0} ${controller.enMonthtoBdMonth(data.date?.month ?? 1)} ${controller.enMonthtoBdMonth(data.date?.year ?? 1)}"),
             const SizedBox(height: 10),
+            Container(
+              margin: EdgeInsets.all(5),
+              height: height * 0.1,
+              decoration: BoxDecoration(
+                  border: Border.all(color: primaryColor2),
+                  borderRadius: BorderRadius.circular(8)
+              ),
+              child: Center(child: Text("Custom Ads Box")),
+            ),
+            const SizedBox(height: 10),
             Text(
               data.title?.rendered ?? "",
               style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
@@ -59,6 +81,15 @@ class DetailPostScreen extends StatelessWidget {
                 'url':"https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-ef9e058ccc3a98d85030.woff2"
               };
             },),
+            Container(
+              margin: EdgeInsets.all(5),
+              height: height * 0.1,
+              decoration: BoxDecoration(
+                  border: Border.all(color: primaryColor2),
+                  borderRadius: BorderRadius.circular(8)
+              ),
+              child: Center(child: Text("Custom Ads Box")),
+            ),
             Text("Share this post",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600)),
             SizedBox(height: 15),
             InkWell(

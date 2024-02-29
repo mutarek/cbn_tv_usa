@@ -49,9 +49,9 @@ class PageScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                Text("Sample User",
+                Text("Example User",
                     style: Theme.of(context).textTheme.headlineMedium),
-                Text("sample@gmail.com",
+                Text("example@gmail.com",
                     style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 20),
 

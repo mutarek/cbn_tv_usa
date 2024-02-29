@@ -40,42 +40,24 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(12),
                 child: Column(
                   children: [
-                    // _showAppbar
-                    //     ? Container(
-                    //         decoration: BoxDecoration(
-                    //             borderRadius: BorderRadius.circular(15),
-                    //             border: Border.all(color: primaryColor)),
-                    //         height: 50,
-                    //         child: TextField(
-                    //           onChanged: (value) {
-                    //             controller.searchFromList(value);
-                    //           },
-                    //           decoration: const InputDecoration(
-                    //               contentPadding: EdgeInsets.only(left: 10),
-                    //               hintText: "Search News",
-                    //               suffixIcon: Icon(Icons.search),
-                    //               border: OutlineInputBorder(
-                    //                   borderRadius: BorderRadius.all(
-                    //                       Radius.circular(8.0)))),
-                    //         ),
-                    //       )
-                    //     : const SizedBox.shrink(),
+                    _showAppbar
+                        ? Container(
+                margin: EdgeInsets.all(5),
+          height: height * 0.1,
+          decoration: BoxDecoration(
+              border: Border.all(color: primaryColor2),
+              borderRadius: BorderRadius.circular(8)
+          ),
+          child: Center(child: Text("Custom Ads Box")),
+        )
+                        : const SizedBox.shrink(),
                     SizedBox(height: 10),
-                    Container(
-                      margin: EdgeInsets.all(5),
-                      height: 100,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: primaryColor2),
-                          borderRadius: BorderRadius.circular(8)
-                      ),
-                      child: Center(child: Text("Custom Ads Box")),
-                    ),
                     Expanded(
                       child: ListView.separated(
                         separatorBuilder: (_,position){
                           return position.isOdd ?Container(
                             margin: EdgeInsets.all(5),
-                            height: 100,
+                            height: height * 0.1,
                             decoration: BoxDecoration(
                               border: Border.all(color: primaryColor2),
                               borderRadius: BorderRadius.circular(8)
