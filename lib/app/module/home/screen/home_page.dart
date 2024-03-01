@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cbn_tv_usa/app/module/auth/components/custom_popup.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/detail_post_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/shimmers/home_shimmer.dart';
@@ -34,8 +35,90 @@ class _HomePageState extends State<HomePage> {
                     child: CircularProgressIndicator(),
                   )
                 : const SizedBox.shrink()),
-        body: controller.isLoading
-            ? const HomeShimmer()
+        body: controller.isLoading ?
+        //     ? Center(
+        //   child: Padding(
+        //     padding:const EdgeInsets.symmetric(horizontal: 25, vertical: 220),
+        //     child: Card(
+        //       color: const Color(0XFFf1f2f3),
+        //       shape: const RoundedRectangleBorder(
+        //           borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        //       child: Column(
+        //         mainAxisSize: MainAxisSize.min,
+        //         children: [
+        //           SizedBox(
+        //             height: 16,
+        //           ),
+        //           Center(
+        //             child: Text("প্রসেসিং চলছে...",
+        //                 style: const TextStyle(
+        //                     fontSize: 18,
+        //                     color: Colors.black,
+        //                     fontWeight: FontWeight.w600),
+        //                 textAlign: TextAlign.center,
+        //                 overflow: TextOverflow.ellipsis),
+        //           ),
+        //           SizedBox(
+        //             height: (5),
+        //           ),
+        //           CircularProgressIndicator(),
+        //           SizedBox(
+        //             height: (5),
+        //           ),
+        //           SizedBox(
+        //             height: (1.0),
+        //           ),
+        //           Column(
+        //             children: [
+        //               Align(
+        //                 alignment: Alignment.center,
+        //                 child: SizedBox(
+        //                   height: (70),
+        //                   width: (70),
+        //                   child: Image.asset("asset/images/logo.png"),
+        //                 ),
+        //       // child: Lottie.asset(AssetConfig.loadingAnimationAssetLottie),),
+        //       // child: Image.asset(AssetConfig.loadingAnimationAssetGif)),
+        //               ),
+        //
+        //       // SizedBox(height: getProportionateScreenHeight(15.0),),
+        //       // Text(message, style: const TextStyle(fontSize: 16, color: ColorConfig.textColorPrimary, fontWeight: FontWeight.w600),
+        //       //     textAlign: TextAlign.center, overflow: TextOverflow.ellipsis),
+        //
+        //               SizedBox(
+        //                 height: (10.0),
+        //               ),
+        //               Text("অনুগ্রহ করে অপেক্ষা করুন, প্রসেসিং চলছে...",
+        //                   style: const TextStyle(
+        //                       fontSize: 14,
+        //                       color: Colors.black,
+        //                       fontWeight: FontWeight.w400),
+        //                   textAlign: TextAlign.center,
+        //                   overflow: TextOverflow.ellipsis),
+        //
+        //               SizedBox(
+        //                 height: (15.0),
+        //               ),
+        //       // Padding(
+        //       //   padding: const EdgeInsets.all(20.0),
+        //       //   child: PrimaryButton(
+        //       //     btnText: StringConfig.goToNext,
+        //       //     onPressed: () {
+        //       //       onOkTapFunction();
+        //       //       Navigator.of(context).pop();
+        //       //     },
+        //       //   ),
+        //       // ),
+        //       // SizedBox(height: getProportionateScreenHeight(5.0),),
+        //             ],
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // )
+
+          HomeShimmer()
             : Padding(
                 padding: const EdgeInsets.all(12),
                 child: Column(
@@ -55,15 +138,16 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ListView.separated(
                         separatorBuilder: (_,position){
-                          return position.isOdd ?Container(
-                            margin: EdgeInsets.all(5),
-                            height: height * 0.1,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: primaryColor2),
-                              borderRadius: BorderRadius.circular(8)
-                            ),
-                            child: Center(child: Text("Custom Ads Box")),
-                          ):SizedBox();
+                          // return position.isOdd ?Container(
+                          //   margin: EdgeInsets.all(5),
+                          //   height: height * 0.1,
+                          //   decoration: BoxDecoration(
+                          //     border: Border.all(color: primaryColor2),
+                          //     borderRadius: BorderRadius.circular(8)
+                          //   ),
+                          //   child: Center(child: Text("Custom Ads Box")),
+                          // ):
+                          return SizedBox();
                           // Card(
                           //   elevation: 0.7,
                           //   shape: RoundedRectangleBorder(

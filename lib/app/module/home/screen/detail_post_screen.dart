@@ -25,15 +25,15 @@ class DetailPostScreen extends StatelessWidget {
         body: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Container(
-              margin: EdgeInsets.all(5),
-              height: height * 0.1,
-              decoration: BoxDecoration(
-                  border: Border.all(color: primaryColor2),
-                  borderRadius: BorderRadius.circular(8)
-              ),
-              child: Center(child: Text("Custom Ads Box")),
-            ),
+            // Container(
+            //   margin: EdgeInsets.all(5),
+            //   height: height * 0.1,
+            //   decoration: BoxDecoration(
+            //       border: Border.all(color: primaryColor2),
+            //       borderRadius: BorderRadius.circular(8)
+            //   ),
+            //   child: Center(child: Text("Custom Ads Box")),
+            // ),
             SizedBox(height: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
@@ -81,15 +81,15 @@ class DetailPostScreen extends StatelessWidget {
                 'url':"https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-ef9e058ccc3a98d85030.woff2"
               };
             },),
-            Container(
-              margin: EdgeInsets.all(5),
-              height: height * 0.1,
-              decoration: BoxDecoration(
-                  border: Border.all(color: primaryColor2),
-                  borderRadius: BorderRadius.circular(8)
-              ),
-              child: Center(child: Text("Custom Ads Box")),
-            ),
+            // Container(
+            //   margin: EdgeInsets.all(5),
+            //   height: height * 0.1,
+            //   decoration: BoxDecoration(
+            //       border: Border.all(color: primaryColor2),
+            //       borderRadius: BorderRadius.circular(8)
+            //   ),
+            //   child: Center(child: Text("Custom Ads Box")),
+            // ),
             Text("Share this post",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600)),
             SizedBox(height: 15),
             InkWell(

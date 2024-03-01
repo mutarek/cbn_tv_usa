@@ -58,7 +58,7 @@ class _CustomizeDrawerState extends State<CustomizeDrawer> {
                       itemBuilder: (_, index) {
                         var page = controller.pageList[index];
                         return Card(
-                          elevation: 10,
+                          elevation: 3,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)
                           ),
@@ -67,16 +67,18 @@ class _CustomizeDrawerState extends State<CustomizeDrawer> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8)),
                             child: ListTile(
+                              titleTextStyle: TextStyle(
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w200,
+                                fontSize: 14,
+                                color: primaryColor2
+                              ),
                               title: Text((page.title?.rendered ?? "")
                                   .capitalizeFirst
-                                  .toString(),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  fontFamily: "Poppins"
-                                ),),
+                                  .toString()),
                               trailing: const Icon(
                                 Icons.arrow_forward_ios_outlined,
-                                size: 16,
+                                size: 13,
                               ),
                               onTap: () {
                                 controller.updatePageIndex(index);
