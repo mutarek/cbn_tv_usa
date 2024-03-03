@@ -23,7 +23,7 @@ class DetailPostScreen extends StatelessWidget {
           title: Text(data.title?.rendered ?? ""),
         ),
         body: ListView(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16),
           children: [
             // Container(
             //   margin: EdgeInsets.all(5),
