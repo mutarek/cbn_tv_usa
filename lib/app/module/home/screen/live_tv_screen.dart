@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'helper.dart';
 
@@ -21,6 +22,35 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   final String contentBase64 = base64Encode(const Utf8Encoder().convert(html));
+
+  List<String> titles =[
+    "জ্যাকসন হাইটসে শেফ’স মহলে তৈরী হচ্ছে বাহারী ইফতার",
+    ""
+  ];
+
+  final List<YoutubePlayerController> _controllers = [
+    'Y3jwvf_GibY',
+    'DPL_SV3n7IU',
+    'jhdFe3evXpk',
+    'tH2w6Oxx0kQ',
+    'Bl4dEAtxo0M',
+    'OMOGaugKpzs',
+  ]
+      .map<YoutubePlayerController>(
+        (videoId) => YoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+      ),
+    ),
+  )
+      .toList();
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +74,44 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
                     fontSize: 16
                 )),
               ],
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: ListView.builder(
+              padding: EdgeInsets.all(16),
+              itemCount: _controllers.length,
+              itemBuilder: (_,index){
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                  YoutubePlayer(
+                  key: ObjectKey(_controllers[index]),
+                  controller: _controllers[index],
+                  actionsPadding: const EdgeInsets.only(left: 16.0),
+                  bottomActions: [
+                    CurrentPosition(),
+                    const SizedBox(width: 10.0),
+                    ProgressBar(isExpanded: true),
+                    const SizedBox(width: 10.0),
+                    RemainingDuration(),
+                    FullScreenButton(),
+                  ],
+                ),
+                      SizedBox(height: 10),
+                      Text("জ্যাকসন হাইটসে শেফ’স মহলে তৈরী হচ্ছে বাহারী ইফতার",style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16
+                      )),
+                      SizedBox(height: 10),
+                    ],
+                  ),
+                );
+              },
             ),
           )
           // Or you can use the video player directly
