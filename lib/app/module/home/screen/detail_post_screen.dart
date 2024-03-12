@@ -32,7 +32,7 @@ class DetailPostScreen extends StatelessWidget {
                   border: Border.all(color: primaryColor2),
                   borderRadius: BorderRadius.circular(8)
               ),
-              child: Center(child: Text("Custom Ads Bx")),
+              child: Center(child: Text("Custom Ads Box")),
             ),
             SizedBox(height: 10),
             ClipRRect(
