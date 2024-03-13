@@ -25,32 +25,30 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
 
   List<String> titles =[
     "জ্যাকসন হাইটসে শেফ’স মহলে তৈরী হচ্ছে বাহারী ইফতার",
-    ""
+    "'চট্টগ্রামের প্রথম জয় বাংলা কনসার্ট'",
+    "যুক্তরাষ্ট্রের গণতন্ত্র স্বাধীনতা হুমকিতে, বললেন বাইডেন",
+    "বিশ্বজুড়ে বেশ কয়েকটি দেশে বন্ধ ফেসবুক",
+    "চট্টগ্রামে আগুনে পুড়লো ব্রাজিল থেকে আনা এস আলমের এক লাখ টন অপরিশোধিত চিনি",
+    "নিউয়র্কে প্রাণহারানো দম্পতির সন্তানদের পাশে দাঁড়ানোর আহ্বান জানিয়ে 'GoFundMe' ক্যাম্পেইন"
   ];
 
   final List<YoutubePlayerController> _controllers = [
     'Y3jwvf_GibY',
-    'DPL_SV3n7IU',
-    'jhdFe3evXpk',
-    'tH2w6Oxx0kQ',
-    'Bl4dEAtxo0M',
-    'OMOGaugKpzs',
+    'VWPpFMY0sEs',
+    '4Vu9VgVYWu0',
+    'yGlEIEgqOco',
+    'iRqXR7iy0H4',
+    'UjOqgz3Iojg',
   ]
       .map<YoutubePlayerController>(
         (videoId) => YoutubePlayerController(
       initialVideoId: videoId,
       flags: const YoutubePlayerFlags(
-        autoPlay: false,
+        autoPlay: true,
       ),
     ),
   )
       .toList();
-
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +101,7 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
                   ],
                 ),
                       SizedBox(height: 10),
-                      Text("জ্যাকসন হাইটসে শেফ’স মহলে তৈরী হচ্ছে বাহারী ইফতার",style: TextStyle(
+                      Text("${titles[index]}",style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 16
                       )),
