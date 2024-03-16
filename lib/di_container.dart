@@ -8,6 +8,8 @@ import 'package:cbn_tv_usa/app/utils/appConstant.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import 'app/splash/splash_provider.dart';
+
 final sl = GetIt.instance;
 
 Future<void> init() async {
@@ -20,7 +22,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CategoryRepository(dioClient: sl()));
 
   // Provider
-  //sl.registerFactory(() => SplashProvider(splashRepo: sl()));
+  sl.registerFactory(() => SplashProvider());
   sl.registerFactory(() => HomeController(homeRepository: sl()));
   sl.registerFactory(() => CategoryController(categoryRepository: sl()));
 

@@ -55,6 +55,7 @@ dependencies:
   webview_flutter: ^3.0.4
   custom_social_share: ^1.0.7
   youtube_player_flutter: ^9.0.0
+  internet_connection_checker: ^1.0.0+1
 
 
 dev_dependencies:

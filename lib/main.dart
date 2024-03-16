@@ -1,5 +1,6 @@
 import 'package:cbn_tv_usa/app/module/category/controller/category_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
+import 'package:cbn_tv_usa/app/splash/splash_provider.dart';
 import 'package:cbn_tv_usa/app/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,7 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (context) => di.sl<HomeController>()),
       ChangeNotifierProvider(create: (context) => di.sl<CategoryController>()),
+      ChangeNotifierProvider(create: (context) => di.sl<SplashProvider>()),
     ],
     child: const MyApp(),
   ));

@@ -1,9 +1,10 @@
 import 'dart:async';
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/home_screen.dart';
+import 'package:cbn_tv_usa/app/splash/no_internet_screen.dart';
 import 'package:cbn_tv_usa/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,13 +16,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    navigate();
     super.initState();
-    Timer(const Duration(seconds: 3), () async {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (builder) => MainHomeScreen()),
-          (route) => true);
-    });
   }
 
   @override
@@ -84,5 +80,36 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
     );
+  }
+
+  void navigate() async {
+    bool result = await InternetConnectionChecker().hasConnection;
+    if (result == true) {
+      // ignore: use_build_context_synchronously
+      //Provider.of<SplashProvider>(context, listen: false).initializeVersion();
+      Future.delayed(const Duration(seconds: 3), () {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (builder) => MainHomeScreen()),
+                (route) => true);
+      });
+    } else {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (builder) => NoInternetScreen()),
+              (route) => true);
+      //Helper.toScreen(const NoInternetScreen());
+      // Provider.of<SplashProvider>(context, listen: false).initializeVersion();
+      // Future.delayed(const Duration(seconds: 5), () {
+      //   if (Provider.of<AuthProvider>(context, listen: false).getUserToken().isEmpty) {
+      //     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const LoginScreen()), (route) => false);
+      //   } else {
+      //     Provider.of<NotificationProvider>(context, listen: false).check();
+      //     Provider.of<AuthProvider>(context, listen: false).getUserInfo();
+      //     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const DashboardScreen()), (route) => false);
+      //     Provider.of<ProfileProvider>(context, listen: false).initializeUserData();
+      //   }
+      // });
+    }
   }
 }

@@ -2,6 +2,8 @@ import 'package:cbn_tv_usa/app/module/category/screen/category_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/components/search_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/secondpage.dart';
+import 'package:cbn_tv_usa/app/splash/no_internet_screen.dart';
+import 'package:cbn_tv_usa/app/splash/splash_provider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,14 +31,16 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   @override
   void initState() {
     Provider.of<HomeController>(context, listen: false).getAllPosts(true);
+    Provider.of<SplashProvider>(context, listen: false).checkConnection();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    return Consumer<HomeController>(builder: (context, controller, child) {
-      return Scaffold(
+    return Consumer2<HomeController, SplashProvider>(builder: (context, controller,splash, child) {
+      return splash.checkConnection() == true ?
+      NoInternetScreen():Scaffold(
         appBar: AppBar(
           elevation: 1.5,
           title: Image.asset("asset/images/logo.png",height: height * 0.06,),
@@ -44,9 +48,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           iconTheme: const IconThemeData(color: primaryColor),
           actions: [
             InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (builder)=> SearchScreen()));
-              },
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (builder)=> SearchScreen()));
+                },
                 child: Icon(CupertinoIcons.search)),
             SizedBox(width: 15)
           ],
