@@ -46,7 +46,7 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
         (videoId) => YoutubePlayerController(
       initialVideoId: videoId,
       flags: const YoutubePlayerFlags(
-        autoPlay: true,
+        autoPlay: false,
       ),
     ),
   )
@@ -72,7 +72,7 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("Recent Video News ",style: TextStyle(
+                Text("Recent Video News",style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16
                 )),
