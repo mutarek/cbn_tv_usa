@@ -31,7 +31,12 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
     "যুক্তরাষ্ট্রের গণতন্ত্র স্বাধীনতা হুমকিতে, বললেন বাইডেন",
     "বিশ্বজুড়ে বেশ কয়েকটি দেশে বন্ধ ফেসবুক",
     "চট্টগ্রামে আগুনে পুড়লো ব্রাজিল থেকে আনা এস আলমের এক লাখ টন অপরিশোধিত চিনি",
-    "নিউয়র্কে প্রাণহারানো দম্পতির সন্তানদের পাশে দাঁড়ানোর আহ্বান জানিয়ে 'GoFundMe' ক্যাম্পেইন"
+    "নিউয়র্কে প্রাণহারানো দম্পতির সন্তানদের পাশে দাঁড়ানোর আহ্বান জানিয়ে 'GoFundMe' ক্যাম্পেইন",
+    "নিউইয়র্কে নিজ ব্যায়ামাগারে মিললো বাংলাদেশী যুবকের মরদেহ",
+    'দানের কোটি টাকায় প্রতিদিন দুই থেকে পাঁচ হাজার মানুষের ইফতারের আয়োজন মসজিদে'
+    'বসন্ত আর ভালোবাসায় উৎসবমুখর চট্টগ্রাম',
+    'দুই প্রজন্মের তারকা বাঁধলেন জুটি'
+
   ];
 
   final List<YoutubePlayerController> _controllers = [
@@ -41,6 +46,10 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
     'yGlEIEgqOco',
     'iRqXR7iy0H4',
     'UjOqgz3Iojg',
+    'LlGlgNGlXCo'
+    'A1FQiFvc74c'
+    'e9OleKiZOMQ',
+    'eBkmgjpmKxc'
   ]
       .map<YoutubePlayerController>(
         (videoId) => YoutubePlayerController(
@@ -72,7 +81,7 @@ class _LiveTVScreenState extends State<LiveTVScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("Recent Video News ",style: TextStyle(
+                Text("Recent Video News",style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16
                 )),

@@ -1,4 +1,4 @@
-package com.example.cbn_tv_usa
+package com.dhakadigital.cbntvusa
 
 import io.flutter.embedding.android.FlutterActivity
 
