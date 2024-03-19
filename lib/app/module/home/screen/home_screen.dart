@@ -2,6 +2,7 @@ import 'package:cbn_tv_usa/app/module/category/screen/category_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/components/search_screen.dart';
 import 'package:cbn_tv_usa/app/module/home/controller/home_controller.dart';
 import 'package:cbn_tv_usa/app/module/home/screen/secondpage.dart';
+import 'package:cbn_tv_usa/app/module/home/screen/test_patment.dart';
 import 'package:cbn_tv_usa/app/splash/no_internet_screen.dart';
 import 'package:cbn_tv_usa/app/splash/splash_provider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -22,6 +23,7 @@ class MainHomeScreen extends StatefulWidget {
 
 class _MainHomeScreenState extends State<MainHomeScreen> {
   var pagesAll = [
+    //TestPaymentScreen(),
     const LiveTVScreen(),
     const HomePage(),
     const CategoryScreen(),
